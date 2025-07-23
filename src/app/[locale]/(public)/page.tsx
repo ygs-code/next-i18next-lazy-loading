@@ -1,11 +1,11 @@
 import { Trans } from 'react-i18next/TransWithoutContext'
-import { getT } from '@/i18n'
+import { getTranslations } from '@/i18n'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { Link } from '@/components/Link'
 
 export default async function Page() {
-  const { t } = await getT()
+  const { t } = await getTranslations('index')
 
   return (
     <>
@@ -19,10 +19,10 @@ export default async function Page() {
         <div style={{ width: '100%' }}>
           <p>
             <Trans t={t} i18nKey="blog.text">
-              111 Check out the corresponding <a href={t('blog.link')}>blog post</a> describing this example.
+               Check out the corresponding <a >blog post</a> describing this example.
             </Trans>
           </p>
-          <a href={t('blog.link')}>
+          <a  >
             <img
               style={{ width: '50%' }}
               src="https://cdn.prod.website-files.com/67a323e323a50df7f24f0a94/67f268673fcfae53e5d4697c_i18n-next-app-router.jpg"
@@ -37,6 +37,12 @@ export default async function Page() {
           <Link href="/client-page">
             <button type="button">{t('to-client-page')}</button>
           </Link>
+
+
+          <Link href="/second-client-page">
+            <button type="button">{t('second-client-page')}</button>
+          </Link>
+
         </div>
       </main>
       <Footer />

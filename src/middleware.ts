@@ -21,7 +21,7 @@ export const config = {
  
 // 这个是中间件语言处理
 export function middleware(req) {
-    console.log("middleware--------------");
+
 
   // 如果是网站图标
   if (
@@ -32,8 +32,7 @@ export function middleware(req) {
   }
   let lng;
   let response;
-  // console.log("middleware==");
-  // console.log("cookieName==", cookieName);
+
 
   // 首先获取 cookie中的语言设置
   if (req.cookies.has(cookieName)) {
@@ -53,7 +52,10 @@ export function middleware(req) {
   }
 
 
-  // console.log('lng=====',lng)
+
+
+
+
 
   // 查找路径出现哪一个语言的
   const lngInPath = languages.find((loc) =>
@@ -86,6 +88,7 @@ export function middleware(req) {
   // 刷新路由
   if (req.headers.has("referer")) {
     const refererUrl = new URL(req.headers.get("referer"));
+
     const lngInReferer = languages.find((l) =>
       // refererUrl.pathname.startsWith(`/${l}`)
       req.nextUrl.pathname.startsWith(`/${l}`)
@@ -93,12 +96,7 @@ export function middleware(req) {
 
     response = NextResponse.next({ headers });
     response.cookies.set(cookieName, lngInPath || lng);
-    // console.log("cookieName==", cookieName);
-    // console.log("lngInReferer==", lngInReferer);
 
-
-    // console.log('req.nextUrl.pathname==',   req.nextUrl.pathname)
-    // console.log('refererUrl.pathname==',  refererUrl.pathname)
 
     // if (lngInReferer) {
     //   response.cookies.set(cookieName, lngInReferer);

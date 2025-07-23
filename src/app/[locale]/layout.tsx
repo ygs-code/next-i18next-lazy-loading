@@ -3,14 +3,14 @@ import '../base.css'
 
 import { dir } from 'i18next'
 import { languages } from '@/i18n/settings'
-import { getT } from '@/i18n'
+import { getTranslations } from '@/i18n'
 
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }))
 }
 
 export async function generateMetadata() {
-  const { t } = await getT()
+  const { t } = await getTranslations('index')
   return {
     title: t('title'),
     content: 'A playground to explore new Next.js 13/14/15 app directory features such as nested layouts, instant loading states, streaming, and component level data fetching.'

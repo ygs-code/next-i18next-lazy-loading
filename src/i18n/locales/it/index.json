@@ -3,9 +3,9 @@
   "title": "Casa",
   "to-client-page": "Alla pagina client",
   "to-second-page": "Alla seconda pagina",
+  "second-client-page": "Seconda pagina client",
   "welcome": "Benvenuti a Next.js 13/14/15 <1>con le nuove funzionalità di app directory</1> e i18next",
   "blog": {
-    "text": "Scopri il corrispondente <1>articolo</1> che descrivere questo esempio.",
-    "link": "https://locize.com/blog/next-app-dir-i18n/"
+    "text": "Scopri il corrispondente <1>articolo</1> che descrivere questo esempio."
   }
 }
