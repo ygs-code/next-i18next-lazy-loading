@@ -6,7 +6,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer/client";
 import { Link } from "@/components/Link/client";
 import { useState } from "react";
-import i18next, { languagesOptions } from "@/i18n";
+ 
 export default function Page() {
   const { t } = useTranslations("client-page");
   const [counter, setCounter] = useState(0);

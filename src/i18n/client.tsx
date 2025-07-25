@@ -32,7 +32,7 @@ useTranslation
   const { t } = useTranslation(['common', 'contact_form']);
 
 */
-export const useTranslations = (ns, options) => {
+export const useTranslations = (ns: string | [string], options?: Record<string, unknown>) => {
       //  const lng = i18next.language;
 
        // 从url中获取语言·

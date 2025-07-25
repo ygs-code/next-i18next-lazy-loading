@@ -16,7 +16,13 @@ addResourceBundle
 
 // 这个就是服务端加载
 //
-export const getTranslations = async (ns, options) => {
+export const getTranslations = async (
+    ns: string | [string],
+    options?: Record<string, unknown>
+): Promise<{
+    t: (key: string, options?: Record<string, unknown>) => string,
+    i18n: typeof i18next
+}> => {
     //  import { headers } from 'next/headers';
 
     if (runsOnServerSide) {
@@ -43,14 +49,19 @@ export const getTranslations = async (ns, options) => {
             // 动态加载
             t: i18next.getFixedT(
                 // 如果没有设置语言，则使用当前语言
-                lng ?? i18next.resolvedLanguage,
+                (lng ?? i18next.resolvedLanguage) as string,
                 // Array.isArray(ns) ? ns[0] : ns,
                 ns,
-                options?.keyPrefix,
+                options?.keyPrefix as string | undefined,
             ),
             i18n: i18next,
         };
     } else {
-        return {};
+        return {
+            t: (key: string, options?: Record<string, unknown>) => {
+                return i18next.t(key, options);
+            },
+            i18n: i18next,
+        };
     }
 };
